@@ -500,3 +500,8 @@ xcuserdata/
 *.out
 *.app
 
+
+# Nix
+.direnv/
+result
+result-*
