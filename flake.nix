@@ -1,10 +1,21 @@
 {
   description = "PicoGK geometry kernel with a natively built Linux runtime";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    runtime = {
+      url = "git+https://github.com/reimundklain/PicoGKRuntime?ref=fix-narrow-band&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
   outputs =
-    { self, nixpkgs }:
+    {
+      self,
+      nixpkgs,
+      runtime,
+    }:
     let
       systems = [
         "x86_64-linux"
@@ -16,7 +27,7 @@
     in
     {
       packages = forAllSystems (pkgs: {
-        picogk-runtime = pkgs.callPackage ./nix/picogk-runtime.nix { };
+        picogk-runtime = runtime.packages.${pkgs.stdenv.hostPlatform.system}.default;
         default = self.packages.${pkgs.stdenv.hostPlatform.system}.picogk-runtime;
       });
 

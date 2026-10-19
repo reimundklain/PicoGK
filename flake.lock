@@ -18,7 +18,31 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "runtime": "runtime"
+      }
+    },
+    "runtime": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792445585,
+        "narHash": "sha256-5cD+k65kVm7tERZKTMUCIxs1Vht5ocs4A3KFex8VBPE=",
+        "ref": "fix-narrow-band",
+        "rev": "b5cde93aad3986aa85b449c50dc141f7adc292ed",
+        "revCount": 216,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/reimundklain/PicoGKRuntime"
+      },
+      "original": {
+        "ref": "fix-narrow-band",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/reimundklain/PicoGKRuntime"
       }
     }
   },
